@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class PlayerBaseState : IState
@@ -40,12 +41,24 @@ public class PlayerBaseState : IState
 
     protected virtual void AddInputActionsCallbacks()
     {
+        PlayerInput input = StateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled += OnMovementCanceled;
+        input.PlayerActions.Run.started += OnRunStarted;
+    }
 
+    protected virtual void OnRunStarted(InputAction.CallbackContext obj)
+    {
+    }
+
+    protected virtual void OnMovementCanceled(InputAction.CallbackContext obj)
+    {
     }
 
     protected virtual void RemoveInputActionCallbacks()
     {
-
+        PlayerInput input = StateMachine.Player.Input;
+        input.PlayerActions.Movement.canceled -= OnMovementCanceled;
+        input.PlayerActions.Run.started -= OnRunStarted;
     }
 
     private void ReadMovementInput()
@@ -95,13 +108,21 @@ public class PlayerBaseState : IState
         return StateMachine.MovementSpeed * StateMachine.MovementSpeedModifier;
     }
 
-    protected void StartAnimation(int animationHash)
+    protected void StartAnimation(Dictionary<string, int>animationHash)
     {
-        StateMachine.Player.Animator.SetBool(animationHash, true);
+        foreach (var hash in animationHash)
+        {
+            Debug.Log($" Start : {hash.Key}");
+            StateMachine.Player.Animator.SetBool(hash.Value, true);
+        }
     }
 
-    protected void StopAnimation(int animationHash)
+    protected void StopAnimation(Dictionary<string, int>animationHash)
     {
-        StateMachine.Player.Animator.SetBool(animationHash, false);
+        foreach (var hash in animationHash)
+        {
+            Debug.Log($" Start : {hash.Key}");
+            StateMachine.Player.Animator.SetBool(hash.Value, false);
+        }
     }
 }

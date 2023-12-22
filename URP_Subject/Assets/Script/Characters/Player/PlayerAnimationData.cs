@@ -20,31 +20,31 @@ public class PlayerAnimationData
     [Header("Attack Parameter")]
     [SerializeField] private string attackParameterName = "@Attack";
     [SerializeField] private string comboAttackParameterName = "ComboAttack";
+
+    public Dictionary<string, int> GroundParameterHash { get; set; } = new();
+    public Dictionary<string, int> IdleParameterHash { get; set; } = new();
+    public Dictionary<string, int> WalkParameterHash { get; set; } = new();
+    public Dictionary<string, int> RunParameterHash { get; set; }= new();
     
-    public int GroundParameterHash { get; set; }
-    public int IdleParameterHash { get; set; }
-    public int WalkParameterHash { get; set; }
-    public int RunParameterHash { get; set; }
+    public Dictionary<string, int> AirParameterHash { get; set; }= new();
+    public Dictionary<string, int> JumpParameterHash { get; set; }= new();
+    public Dictionary<string, int> FallParameterHash { get; set; }= new();
     
-    public int AirParameterHash { get; set; }
-    public int JumpParameterHash { get; set; }
-    public int FallParameterHash { get; set; }
-    
-    public int AttackParameterHash { get; set; }
-    public int ComboAttackParameterHash { get; set; }
+    public Dictionary<string, int> AttackParameterHash { get; set; } = new();
+    public Dictionary<string, int> ComboAttackParameterHash { get; set; } = new();
 
     public void Initialize()
-    {
-        GroundParameterHash = Animator.StringToHash(groundParameterName);
-        IdleParameterHash = Animator.StringToHash(groundParameterName);
-        WalkParameterHash = Animator.StringToHash(groundParameterName);
-        RunParameterHash = Animator.StringToHash(groundParameterName);
+    {                                                          
+        GroundParameterHash.Add("@Ground",Animator.StringToHash(groundParameterName));
+        IdleParameterHash.Add("Idle",Animator.StringToHash(groundParameterName));
+        WalkParameterHash.Add("Walk",Animator.StringToHash(groundParameterName));
+        RunParameterHash.Add("Run",Animator.StringToHash(groundParameterName));
         
-        AirParameterHash = Animator.StringToHash(groundParameterName);
-        JumpParameterHash = Animator.StringToHash(groundParameterName);
-        FallParameterHash = Animator.StringToHash(groundParameterName);
+        AirParameterHash.Add("Air",Animator.StringToHash(groundParameterName));
+        JumpParameterHash.Add("Jump",Animator.StringToHash(groundParameterName));
+        FallParameterHash.Add("Fall",Animator.StringToHash(groundParameterName));
         
-        AttackParameterHash = Animator.StringToHash(groundParameterName);
-        ComboAttackParameterHash = Animator.StringToHash(groundParameterName);
+        AttackParameterHash.Add("Attack",Animator.StringToHash(groundParameterName));
+        ComboAttackParameterHash.Add("Combo",Animator.StringToHash(groundParameterName));
     }
 }

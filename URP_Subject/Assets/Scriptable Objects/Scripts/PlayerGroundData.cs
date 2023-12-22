@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PlayerGroundData : MonoBehaviour
+public class PlayerGroundData
 {
     [field: SerializeField]
     [field: Range(0f, 25f)]

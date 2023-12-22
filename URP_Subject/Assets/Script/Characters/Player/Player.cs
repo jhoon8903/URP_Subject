@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         AnimationData.Initialize();
 
         RigidBody = GetComponent<Rigidbody>();
-        Animator = GetComponent<Animator>();
+        Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerInput>();
         Controller = GetComponent<CharacterController>();
         _playerStateMachine = new PlayerStateMachine(this);
@@ -32,5 +32,17 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        _playerStateMachine.ChangeState(_playerStateMachine.IdleState);
+    }
+
+    private void Update()
+    {
+        _playerStateMachine.HandleInput();
+        _playerStateMachine.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        _playerStateMachine.PhysicsUpdate();
     }
 }
