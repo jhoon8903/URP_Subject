@@ -35,16 +35,16 @@ public class PlayerAnimationData
 
     public void Initialize()
     {                                                          
-        GroundParameterHash.Add("@Ground",Animator.StringToHash(groundParameterName));
-        IdleParameterHash.Add("Idle",Animator.StringToHash(groundParameterName));
-        WalkParameterHash.Add("Walk",Animator.StringToHash(groundParameterName));
-        RunParameterHash.Add("Run",Animator.StringToHash(groundParameterName));
+        GroundParameterHash.Add("@Ground", Animator.StringToHash(groundParameterName));
+        IdleParameterHash.Add("Idle", Animator.StringToHash(idleParameterName));
+        WalkParameterHash.Add("Walk", Animator.StringToHash(walkParameterName));
+        RunParameterHash.Add("Run", Animator.StringToHash(runParameterName));
         
-        AirParameterHash.Add("Air",Animator.StringToHash(groundParameterName));
-        JumpParameterHash.Add("Jump",Animator.StringToHash(groundParameterName));
-        FallParameterHash.Add("Fall",Animator.StringToHash(groundParameterName));
+        AirParameterHash.Add("Air", Animator.StringToHash(airParameterName));
+        JumpParameterHash.Add("Jump", Animator.StringToHash(jumpParameterName));
+        FallParameterHash.Add("Fall", Animator.StringToHash(fallParameterName));
         
-        AttackParameterHash.Add("Attack",Animator.StringToHash(groundParameterName));
-        ComboAttackParameterHash.Add("Combo",Animator.StringToHash(groundParameterName));
+        AttackParameterHash.Add("Attack", Animator.StringToHash(attackParameterName));
+        ComboAttackParameterHash.Add("Combo", Animator.StringToHash(comboAttackParameterName));
     }
 }
